@@ -125,7 +125,7 @@ app.post('/joblocation', async (req, res) => {
 })
 app.get("/job/htol", async (req, res) => {
     try{
-        const job = await Job.find({ job_rating : -1}).populate("company_id").populate("joblocation_id").lean().exec();
+        const job = await Job.find({}).sort({ job_rating : -1}).populate("company_id").populate("joblocation_id").lean().exec();
         res.status(200).send(job)
     }catch(e){
          res.status(500).send({message: e.message});
