@@ -11,7 +11,7 @@
    const companySchema = new mongoose.Schema({
      
      company_name : { type: String, required: true, unique: true},
-     company_info : { type: String, required: true}
+     company_info : { type: String, required: false}
 
    },
    {
@@ -32,8 +32,15 @@
     job_rating : {type: Number, required: true},
     notice_period : {type: String, required: true},
     open_jobs : {type: String, required: true},
-    workfrom_home : {type: Boolean, required: true},
-   },
+    workfrom_home : {type: Boolean, required: false},
+   
+    // jobskill_id:{
+    //     type : mongoose.Schema.Types.ObjectId,
+    //     ref : 'jobskill',
+    //     required: true 
+            
+    // },
+},
    {
        versionKey:false,
        timestamps:true
@@ -41,29 +48,24 @@
 
    const Job = mongoose.model('job',jobSchema);
     
-   const jobskillSchema = new mongoose.Schema({    
-    company_id:{ 
-       type : mongoose.Schema.Types.ObjectId,
-       ref : 'company',
-       required: true 
-   },
-    job_id:{ 
-      type : mongoose.Schema.Types.ObjectId,
-      ref : "job",
-      required: true
+//    const jobskillSchema = new mongoose.Schema({    
+//       job_skill : {type: String, required: true}
+//   },
+//   {
+//       versionKey:false,
+//       timestamps:true
+//   });
 
-    },
-      job_skill : {type: String, required: true},
-      job_location : {type: String, required: true},
+//   const Jobskill = mongoose.model('jobskill',jobskillSchema);
+ 
+  const joblocationSchema = new mongoose.Schema({
+    job_location : {type: String, required: true}
   },
   {
-      versionKey:false,
-      timestamps:true
-  });
-
-  const Jobskill = mongoose.model('jobskill',jobskillSchema);
-
-    
+    versionKey:false,
+    timestamps:true
+})
+  const Joblocation = mongoose.model('joblocation',joblocationSchema);
 
    app.post('/company', async (req, res) => {
        try{
@@ -85,15 +87,25 @@
     }
 });
 
-app.post('/jobskill', async (req, res) => {
+
+app.post('/joblocation', async (req, res) => {
     try{
-        const jobskill = await Jobskill.create(req.body);
-         return res.status(201).send(jobskill);
+        const joblocation = await Joblocation.create(req.body);
+         return res.status(201).send(joblocation);
 
     }catch(e){
         return res.status(500).send({message : e.message});
     }
 });
+// app.post('/jobskill', async (req, res) => {
+//     try{
+//         const jobskill = await Jobskill.create(req.body);
+//          return res.status(201).send(jobskill);
+
+//     }catch(e){
+//         return res.status(500).send({message : e.message});
+//     }
+// });
    
 
 
