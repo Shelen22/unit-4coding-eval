@@ -1,0 +1,23 @@
+{
+  "name": "unit-4coding-eval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shelen22/unit-4coding-eval.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shelen22/unit-4coding-eval/issues"
+  },
+  "homepage": "https://github.com/Shelen22/unit-4coding-eval#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13"
+  }
+}
