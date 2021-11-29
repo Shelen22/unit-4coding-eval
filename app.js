@@ -28,7 +28,7 @@
         ref : 'company',
         required: true 
     },
-    job_title : {type: String, required: true, unique: true},
+    job_title : {type: String, required: true},
     job_rating : {type: Number, required: true},
     notice_period : {type: String, required: true},
     open_jobs : {type: String, required: true},
