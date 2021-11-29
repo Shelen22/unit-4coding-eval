@@ -32,14 +32,13 @@
     job_rating : {type: Number, required: true},
     notice_period : {type: String, required: true},
     open_jobs : {type: String, required: true},
-    workfrom_home : {type: Boolean, required: false},
+    workfrom_home : {type: String, required: false},
+    joblocation_id:{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'joblocation',
+        required: true
+    }
    
-    // jobskill_id:{
-    //     type : mongoose.Schema.Types.ObjectId,
-    //     ref : 'jobskill',
-    //     required: true 
-            
-    // },
 },
    {
        versionKey:false,
@@ -107,7 +106,31 @@ app.post('/joblocation', async (req, res) => {
 //     }
 // });
    
-
+ 
+   app.get("/job/workfrom_home", async (req, res) => {
+       try{
+           const job = await Job.find({workfrom_home : "yes"}).populate("company_id").populate("joblocation_id").lean().exec();
+           res.status(200).send(job)
+       }catch(e){
+            res.status(500).send({message: e.message});
+       }
+   })
+   app.get("/job/notice_period", async (req, res) => {
+    try{
+        const job = await Job.find({ notice_period : "2 month"}).populate("company_id").populate("joblocation_id").lean().exec();
+        res.status(200).send(job)
+    }catch(e){
+         res.status(500).send({message: e.message});
+    }
+})
+app.get("/job/htol", async (req, res) => {
+    try{
+        const job = await Job.find({ job_rating : -1}).populate("company_id").populate("joblocation_id").lean().exec();
+        res.status(200).send(job)
+    }catch(e){
+         res.status(500).send({message: e.message});
+    }
+})
 
   app.listen(2222, async ()=>{
       await connect();
