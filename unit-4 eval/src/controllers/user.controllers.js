@@ -14,7 +14,7 @@ router.post("/", upload.single("profile_pic"), async (req, res) => {
           name:req.body.name,
           email:req.body.email,
           password:req.body.password,
-          profile_pic:req.body.path,
+          profile_pic:req.file.path,
           roles: req.body.roles,
       })
       return res.status(201).send(user)
