@@ -7,8 +7,8 @@ const theatresSchema = new Schema({
     location : {type: String, required: true}
 },
 {
-  versionKey:false,
+  versionKey: false,
   timestamps: true
 });
 
-module.exports = model("theatrea", theatresSchema);
+module.exports = model("theatres", theatresSchema);

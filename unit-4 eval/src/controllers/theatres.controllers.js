@@ -1,8 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 
-const Theatres= require("../models/movie.model");
+const Theatres= require("../models/theatres.model");
 
 
 const router = express.Router()

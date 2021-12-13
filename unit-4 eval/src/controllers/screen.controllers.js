@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 
-const Screen= require("../models/movie.model");
+const Screen= require("../models/screens.model");
 
 
 const router = express.Router()

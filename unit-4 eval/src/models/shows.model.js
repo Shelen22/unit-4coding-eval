@@ -3,7 +3,7 @@ const {Schema, model} = require('mongoose')
 
 const showsSchema = new Schema({
    
-    timing: {type: Number, required: true},
+    timing: {type: String, required: true},
     movie_id :{
         type: Schema.Types.ObjectId,
         ref: 'movie',
