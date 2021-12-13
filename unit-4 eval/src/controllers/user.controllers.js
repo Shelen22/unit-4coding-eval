@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const path = require('path');
+const path = require('path');
 
 const User = require("../models/user.model");
 const upload = require("../middleware/uploads");
